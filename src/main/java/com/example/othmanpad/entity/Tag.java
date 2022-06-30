@@ -1,26 +1,31 @@
 package com.example.othmanpad.entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 @Entity
-public class Role {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Tag {
+
     @Id
     @SequenceGenerator(
-            name="role_sequence",
-            sequenceName = "role_sequence",
+            name="tag_sequence",
+            sequenceName = "tag_sequence",
             allocationSize = 1
     )
 
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "role_sequence"
+            generator = "tag_sequence"
     )
+
     private Long id;
-    private String roleName;
+    private String tagName;
+
+
 }

@@ -28,7 +28,7 @@ public class AppUser {
     private Long id;
     private String username;
     private String password;
-    private LocalDate dob;
+    private String dob;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles= new ArrayList<>();

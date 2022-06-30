@@ -3,6 +3,7 @@ package com.example.othmanpad;
 import com.example.othmanpad.entity.AppUser;
 import com.example.othmanpad.entity.Role;
 import com.example.othmanpad.service.AppUserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 @SpringBootApplication
+@Slf4j
+
 public class OthmanPadApplication {
 
     public static void main(String[] args) {
@@ -24,17 +27,18 @@ public class OthmanPadApplication {
         return new BCryptPasswordEncoder();
     }
 
-//    @Bean
-//    CommandLineRunner runner (AppUserService appUserService){
-//        return args -> {
-//            appUserService.createUser(new AppUser(null,"OthmanMaher","123456", LocalDate.of(2000,8,21),new ArrayList<>()));
-//            appUserService.createRole(new Role(null,"USER"));
-//            appUserService.createRole(new Role(null,"ADMIN"));
-//            appUserService.addRoleToUser("OthmanMaher","USER");
-//            appUserService.addRoleToUser("OthmanMaher","ADMIN");
-//
-////            			userService.addRoleToUser("OthmanMaher","ADMIN");
-////			userService.addRoleToUser("OthmanMaher","USER");
-//        };
-//    }
+    @Bean
+    CommandLineRunner runner (AppUserService appUserService){
+        return args -> {
+
+            appUserService.createUser(new AppUser(null,"OthmanMaher","123456", LocalDate.of(2000,8,21).toString(),new ArrayList<>()));
+            appUserService.createRole(new Role(null,"USER"));
+            appUserService.createRole(new Role(null,"ADMIN"));
+            appUserService.addRoleToUser("OthmanMaher","USER");
+            appUserService.addRoleToUser("OthmanMaher","ADMIN");
+
+//            			userService.addRoleToUser("OthmanMaher","ADMIN");
+//			userService.addRoleToUser("OthmanMaher","USER");
+        };
+    }
 }
