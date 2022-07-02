@@ -23,8 +23,13 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "comment_sequence"
     )
-    private Long id;
-    private User user;
+    private Long commentId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "userId",
+            referencedColumnName = "userId"
+    )
+    private AppUser user;
     private String content;
     private String status;
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,17 +25,45 @@ public class Story {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "story_sequence"
     )
-    private Long id;
+    private Long storyId;
     private String name;
     private String description;
-    //Many to many Tag
-    // One to many chapter
     private String category;
     private String cover;
     private Boolean status;
-    private Collection<String> mainCharacters = new ArrayList<>();
     private String language;
-    // comments
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "storyId",
+            referencedColumnName = "storyId"
+    )
+    private Collection<MainCharacter>mainCharacters=new ArrayList<>();
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "userId",
+            referencedColumnName = "userId"
+    )
+    private AppUser author;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "storyId",
+            referencedColumnName = "storyId"
+    )
+    private Collection<Chapter>chapters=new ArrayList<>();
+
+    @ManyToMany()
+    private Collection<Tag>tags=new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "storyId",
+            referencedColumnName = "storyId"
+    )
+    private Collection<Comment>comments=new ArrayList<>();
 
 
 }

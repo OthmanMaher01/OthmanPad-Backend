@@ -23,7 +23,7 @@ public class Chapter {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "chapter_sequence"
     )
-    private Long id ;
+    private Long chapterId;
     private String author;
     private String title;
     private String content;

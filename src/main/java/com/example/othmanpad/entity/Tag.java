@@ -24,7 +24,7 @@ public class Tag {
             generator = "tag_sequence"
     )
 
-    private Long id;
+    private Long tagId;
     private String tagName;
 
 

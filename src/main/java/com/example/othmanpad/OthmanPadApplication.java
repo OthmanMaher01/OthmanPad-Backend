@@ -27,18 +27,18 @@ public class OthmanPadApplication {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    CommandLineRunner runner (AppUserService appUserService){
-        return args -> {
-
-            appUserService.createUser(new AppUser(null,"OthmanMaher","123456", LocalDate.of(2000,8,21).toString(),new ArrayList<>()));
-            appUserService.createRole(new Role(null,"USER"));
-            appUserService.createRole(new Role(null,"ADMIN"));
-            appUserService.addRoleToUser("OthmanMaher","USER");
-            appUserService.addRoleToUser("OthmanMaher","ADMIN");
-
-//            			userService.addRoleToUser("OthmanMaher","ADMIN");
-//			userService.addRoleToUser("OthmanMaher","USER");
-        };
-    }
+//    @Bean
+//    CommandLineRunner runner (AppUserService appUserService){
+//        return args -> {
+//
+//            appUserService.createUser(new AppUser(null,"OthmanMaher","123456", LocalDate.of(2000,8,21).toString(),new ArrayList<>()));
+//            appUserService.createRole(new Role(null,"USER"));
+//            appUserService.createRole(new Role(null,"ADMIN"));
+//            appUserService.addRoleToUser("OthmanMaher","USER");
+//            appUserService.addRoleToUser("OthmanMaher","ADMIN");
+//
+////            			userService.addRoleToUser("OthmanMaher","ADMIN");
+////			userService.addRoleToUser("OthmanMaher","USER");
+//        };
+//    }
 }

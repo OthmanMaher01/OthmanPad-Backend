@@ -5,9 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -25,11 +25,18 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
     )
-    private Long id;
+    private Long userId;
     private String username;
     private String password;
     private String dob;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles= new ArrayList<>();
+
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(
+//            name = "userId",
+//            referencedColumnName = "userId"
+//    )
+//    private List<Story>stories=new ArrayList<>();
 }
