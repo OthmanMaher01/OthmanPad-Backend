@@ -45,6 +45,7 @@ public class AppUserController {
     @PostMapping(path = "/register")
     public ResponseEntity<AppUser> createUser(@RequestBody AppUser appUser){
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/register").toUriString());
+
         return ResponseEntity.created(uri).body(appUserService.createUser(appUser));
     }
 
@@ -60,18 +61,19 @@ public class AppUserController {
         return ResponseEntity.ok().build();
     }
 
+
+
+
     @GetMapping("/token/refresh")
     public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String authorizationHeader = request.getHeader(AUTHORIZATION);
         if(authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             try {
 
+
                 String refresh_token = authorizationHeader.substring("Bearer ".length());
                 Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());
-                JWTVerifier verifier = JWT.require(algorithm).build();
-                DecodedJWT decodedJWT = verifier.verify(refresh_token);
-                String username = decodedJWT.getSubject();
-                AppUser appUser = appUserService.getAppUser(username);
+                AppUser appUser =(AppUser) request.getAttribute("user");
                 String access_token = JWT.create()
                         .withSubject(appUser.getUsername())
                         .withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 1000))
