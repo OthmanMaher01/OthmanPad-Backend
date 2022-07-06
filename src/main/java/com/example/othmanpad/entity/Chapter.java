@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Data
@@ -24,9 +26,16 @@ public class Chapter {
             generator = "chapter_sequence"
     )
     private Long chapterId;
-    private String author;
     private String title;
     private String content;
+    private Long storyId;
+
+        @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "chapterId",
+            referencedColumnName = "chapterId"
+    )
+    private Collection<Comment>comments=new ArrayList<>();
 
 
 

@@ -1,5 +1,6 @@
 package com.example.othmanpad.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,10 +34,5 @@ public class AppUser {
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles= new ArrayList<>();
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(
-//            name = "userId",
-//            referencedColumnName = "userId"
-//    )
-//    private List<Story>stories=new ArrayList<>();
+
 }

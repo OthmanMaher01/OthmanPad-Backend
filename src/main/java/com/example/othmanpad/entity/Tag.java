@@ -25,6 +25,7 @@ public class Tag {
     )
 
     private Long tagId;
+    @Column(unique = true)
     private String tagName;
 
 

@@ -31,6 +31,7 @@ public class Comment {
     )
     private AppUser user;
     private String content;
-    private String status;
+    private Boolean isWriter;
+    private Long chapterId;
 }
 

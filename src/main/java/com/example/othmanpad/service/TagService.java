@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +26,10 @@ public class TagService {
 
     public List<Tag>createTags(List<Tag> tags){
         return tagRepo.saveAll(tags);
+    }
+
+    public Tag findTag(String tagName){
+       return tagRepo.findTagByTagName(tagName);
     }
 
 }

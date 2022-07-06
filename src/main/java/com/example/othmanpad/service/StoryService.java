@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -23,7 +24,22 @@ public class StoryService {
 
     }
 
+    public List<Story>getStoriesByTag(String tagName){
+        return storyRepo.findStoriesByTagName(tagName);
+    }
 
+
+    public List<Story>getStoriesByUserId(Long userId){
+        return storyRepo.findStoriesByAuthorUserId(userId);
+    }
+
+    public Story getStoryByStoryId(Long storyId){
+        return storyRepo.findStoryByStoryId(storyId);
+    }
+
+    public Story getStoryByChapterId(Long chapterId){
+        return storyRepo.findStoryByChapterId(chapterId);
+    }
 
 
 }

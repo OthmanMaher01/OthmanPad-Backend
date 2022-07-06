@@ -42,6 +42,7 @@ public class Story {
     )
     private Collection<MainCharacter>mainCharacters=new ArrayList<>();
 
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(
             name = "userId",
@@ -57,14 +58,15 @@ public class Story {
     private Collection<Chapter>chapters=new ArrayList<>();
 
     @ManyToMany()
+
     private Collection<Tag>tags=new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(
-            name = "storyId",
-            referencedColumnName = "storyId"
-    )
-    private Collection<Comment>comments=new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(
+//            name = "storyId",
+//            referencedColumnName = "storyId"
+//    )
+//    private Collection<Comment>comments=new ArrayList<>();
 
 
 }
